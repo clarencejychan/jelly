@@ -4,8 +4,8 @@ export default function getDateToday() {
     let month = String(today.getMonth() + 1).padStart(2, '0');
     let year = today.getFullYear();
     return {
-        year : year,
-        month: month,
-        day : day
+        year : 2019,
+        month: 11,
+        day : 30
     }
 }
