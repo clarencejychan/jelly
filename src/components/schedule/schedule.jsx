@@ -28,19 +28,46 @@ function Schedule() {
         let visitorScore = game.visitor.score;
         let homeCode = game.home.abbreviation;
         let homeScore = game.home.score;
-        let gameString = homeCode + " " + homeScore + " - " + visitorScore + visitorCode;
-        return gameString;
+        let gameBasicInfo = homeCode + " " + homeScore + " - " + visitorScore + " " + visitorCode;
+
+
+        let gameMetaInfo; 
+        // Live
+        if (game.period_time.period_status !== "Final" && game.period_time.period_value !== "") {
+            gameMetaInfo = game.period_time.period_status + " with " + game.period_time.game_clock + " to go | @" + game.arena;  
+        } else {
+            // FInished or hasn't started
+            gameMetaInfo = game.period_time.period_status + " | @" + game.arena;  
+        }
+        return gameBasicInfo + " | " + gameMetaInfo;
+    }
+
+    // Pass the selected game to the top level to render the game 
+    function onSelectGame() {
+
     }
 
     return (
         <list 
             left='center'
             top='center'
-            width='80%'
-            height='80%'
+            width='100%'
+            height='100%'
             border={{type: 'line'}}
-            label=' Select a game '
+            label= "Games today "
+            keys
+            vi
+            focused
+            style={
+                {
+                    selected: {
+                      bg: '#804FB3', 
+                      fg: 'white'
+                    }
+                }
+            }
             items={games.map(parseData)}
+            onSelect={() => onSelectGame()}
         />
     )
 }

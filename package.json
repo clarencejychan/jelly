@@ -5,7 +5,7 @@
   "main": "index.js",
   "author": "Clarence Chan",
   "scripts": {
-    "serve": "babel-node ./src/index.jsx"
+    "serve": "rm rockets.log && babel-node ./src/index.jsx"
   },
   "license": "MIT",
   "dependencies": {

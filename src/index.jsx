@@ -10,7 +10,7 @@ const screen = blessed.screen({
     autoPadding: true,
     debug: true,
     smartCSR: true,
-    title: 'nba'
+    title: '🍇'
 });
 
 screen.key(['escape', 'q', 'C-c'], () => {

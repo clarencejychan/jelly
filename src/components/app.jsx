@@ -1,21 +1,34 @@
 import React, { Component } from 'react'
 import Schedule from './schedule/schedule'
-import getDateToday from './util/date'
-import NBA from './util/api'
-
 
 class App extends Component {
+
+    // Use context for current game so it's more easily updatable
+    constructor(props) {
+        this.state = {
+            currentGame : {}
+        }
+    }
+    
+    renderScheduleOrGame() {
+        // If currentGame is empty then 
+        if (!this.state.currentGame) {
+            return <Schedule />
+        } else {
+            // Pass in information to game info.
+            return <GameInfo />
+        }
+    }
+
     render() {
       return (
-        <box top="center"
+        <box 
+            top="center"
             left="center"
             width="70%"
             height="70%"
-            border={{type: 'line'}}
-            style={{border: {fg: 'red'}}}>
-
-            // Add the schedule
-            <Schedule />
+            border={{type: 'line'}}>
+                renderScheduleOrGame()
         </box>
       );
     }
